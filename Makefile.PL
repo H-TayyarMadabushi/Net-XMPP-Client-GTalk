@@ -18,9 +18,15 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-	'Net::XMPP'         => 0     ,
-	'XML::Smart'        => 0     ,
+        'Net::XMPP'         => 0     ,
+        'XML::Smart'        => 0     ,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Net-XMPP-Client-GTalk-*' },
+    META_MERGE => {
+        resources => {
+            license    => 'http://dev.perl.org/licenses/',
+            repository => 'https://github.com/harishmadabushi/Net-XMPP-Client-GTalk',
+        },
+    },
 );
