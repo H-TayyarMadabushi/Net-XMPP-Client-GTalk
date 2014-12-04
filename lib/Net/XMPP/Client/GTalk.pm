@@ -56,7 +56,7 @@ You can quit this program by sending it the chat message 'exit'.
     }
 
     # See options for domain below in documentation for new.
-    my $ob = new Net::XMPP::Client::GTalk( 
+    my $ob = Net::XMPP::Client::GTalk->new(
 	USERNAME   =>  $username         ,
 	PASSWORD   =>  $password         ,
 	);
@@ -102,13 +102,13 @@ You can quit this program by sending it the chat message 'exit'.
 
 =head1 USAGE NOTES
 
-The NET::XMPP connection object is available through $object_of_Net_XMPP_Client_GTalk->{ RAW_CONNECTION } and can be used to call 
-all functions of the NET::XMPP class of modules ( listed below ). 
+The Net::XMPP connection object is available through $object_of_Net_XMPP_Client_GTalk->{ RAW_CONNECTION } and can be used to call
+all functions of the Net::XMPP class of modules ( listed below ).
 
-It should be noted, however, that calling the SetCallBacks function on the NET::XMPP object will cause wait_for_message to fail. 
+It should be noted, however, that calling the SetCallBacks function on the Net::XMPP object will cause wait_for_message to fail.
 SetCallBacks can be called indirectly through new as follows: 
 
-    my $ob = new Net::XMPP::Client::GTalk( 
+    my $ob = Net::XMPP::Client::GTalk->new(
 	USERNAME     =>  $username         ,
 	PASSWORD     =>  $password         ,
 	DOMAIN       => 'gmail.com'        ,           # [ OPTIONAL ] [ DEFAULT gmail.com - set if other such as google apps domain ]
@@ -125,11 +125,11 @@ SetCallBacks can be called indirectly through new as follows:
 
 Other than USERNAME and PASSWORD the other two parameters above are optional. 
 
-The presence_send function does NOT update the chat status. This is because the corresponding NET::XMPP functions do not work. 
+The presence_send function does NOT update the chat status. This is because the corresponding Net::XMPP functions do not work.
 
 Additionally the following does NOT work and this module provides get_online_buddies as a work around. 
 
-    my $roster = $NET_XMPP_Connection->Roster();
+    my $roster = $Net_XMPP_Connection->Roster();
     my $user   = $roster->online( 'somebuddy@gmail.com' );
 
 The value of resource can be changed as shown above. 
@@ -169,7 +169,7 @@ This is a purely object-oriented module and does not export anything.
 
   Usage:                                                                                      
 
-    my $ob = new Net::XMPP::Client::GTalk( 
+    my $ob = Net::XMPP::Client::GTalk->new(
 	USERNAME     =>  $username         ,
 	PASSWORD     =>  $password         ,
 	DOMAIN       => 'gmail.com'        ,           # [ OPTIONAL ] [ DEFAULT gmail.com - set if other such as google apps domain ]
@@ -198,7 +198,7 @@ sub new {
 
 Usage:
 
-    my \$ob = new Net::XMPP::Client::GTalk( 
+    my \$ob = Net::XMPP::Client::GTalk->new(
 	USERNAME     =>  \$username         ,
 	PASSWORD     =>  \$password         ,
 	DOMAIN       => 'gmail.com'        ,           # [ OPTIONAL ] [ DEFAULT gmail.com - set if other such as google apps domain ]
@@ -270,7 +270,7 @@ Usage:
     my $tls               = 1                                        ;
 
 
-    my $connection = new Net::XMPP::Client()      ;
+    my $connection = Net::XMPP::Client->new()     ;
     my %params = ( 
 	tls               => $tls                ,
 	port              => $port               ,
@@ -503,7 +503,7 @@ sub get_buddies {
 =head2 get_online_buddies
 
 This function returns a list of buddies for which we have presence information. This function does not use the inbuilt functions
-provided by NET::XMPP because, for some reason, they do not work. 
+provided by Net::XMPP because, for some reason, they do not work.
 
 This means that the longer you wait the better this list. 
 
